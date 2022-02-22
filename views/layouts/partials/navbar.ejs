@@ -1,0 +1,39 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark navbar-style">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><i class="fas fa-paw fa-lg"></i> Mascotas Perdidas</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapseContent" aria-controls="navbarCollapseContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarCollapseContent">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" id="link1" href="/mascotas">Mascotas Perdidas</a>
+                <a class="nav-link" id="link2" href="/encontradas">Mascotas Encontradas</a>
+                <a class="nav-link" id="link3" href="/nueva">Crear Publicacion</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <% if(!currentUser) {%>
+                <a class="nav-link login-button rounded-pill" href="/login">Iniciar Sesion</a>
+                <a class="nav-link signup-button rounded-pill" href="/registrarse"><span>Registrarse</span></a>
+                <% } else {%>
+                <img src="<%= currentUser.avatar %>" class="avatar-miniatura">
+                <a href="/user/<%= currentUser._id %>" class="nav-link"><%= currentUser.username %></a>
+                <span class="separador">|</span>
+                <div class="notificationBellDiv">
+                    <a href="/user/<%= currentUser._id %>/notificaciones" style="text-decoration: none;"> 
+                        <span class="bellText nav-link">Notificaciones</span>
+                        <i class="fas fa-bell notificationBell"></i>
+                        <% if(currentUser.notifications > 0) { %> 
+                        <span class="notificationNum"> <%= currentUser.notifications %> </span>
+                        <% } %>
+                    </a>
+                </div>
+                <span class="separador">|</span>
+                <a class="nav-link" href="/logout">Cerrar Sesion</a>
+                <% } %>
+            </div>
+        </div>
+
+    </div>
+</nav>

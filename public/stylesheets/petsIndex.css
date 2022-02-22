@@ -1,0 +1,158 @@
+.title {
+    background-color: #fff;
+    border: #bdbbbb solid 2px;
+    padding-bottom: 3px;
+    border-radius: 8px;
+}
+
+.pet-display {
+    max-height: 400px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.img-card{
+    width: 100%;
+    height: 400px;
+    object-fit: fill;
+}
+
+#map-index {
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+#filtrosBtn {
+    background-color: #5383e8;
+    border: #4171d6 solid 1px;
+    width: 100%;
+    color: white;
+    margin-top: auto;
+}
+
+#filtrosBtnDiv {
+    min-height: 78px;
+    display: flex;
+}
+
+.filterFormBtnDiv {
+    display: flex;
+}
+
+#filterFormBtn {
+    align-self: flex-end;
+    width: 100%;
+}
+
+.foundSpan {
+    font-size: .8rem;
+    background-color: #7cd18d;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: #4cb880 solid 2px;
+    border-radius: 5px;
+}
+
+.btn-filtro:hover {
+    color: black !important;
+    background-color: #4171d6 !important;
+    transition: 0.2s;
+}
+
+.card-body {
+    height: 100%;
+    border-left: #a1a1a1 solid 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body h2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.card-body p {
+    margin-bottom: 0px;
+    padding-left: 4px;
+}
+
+.card-body h5 {
+    margin-bottom: 0px;
+}
+
+.card-body div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.petsImgDiv {
+    padding-right: 0;
+} 
+
+.petsBodyDiv {
+    padding-left: 0;
+}
+
+#editUserGeometry {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    #map-index {
+        height: 400px;
+    }
+
+    .pet-display {
+        max-height: inherit;
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    }
+    
+    .petsImgDiv {
+        padding-right: calc(var(--bs-gutter-x) * .5);
+        text-align: center;
+    }
+
+    .img-card {
+        border-radius: 8px;
+        width: 350px;
+        height: 350px;
+    }
+    
+    .smallTextDescriptions {
+        display: none;
+    }
+
+    .card-body {
+        border-left: none;
+    }
+    
+}
+
+/* @media (max-width: 768px) {
+    .smallTextDescriptions {
+        display: none;
+    }
+
+    .card-text {
+        max-height: 190px;
+        overflow-y: hidden;
+    }
+    
+    .filterFormBtnDiv{
+        margin-top: 1rem;
+    }
+
+    .img-card {
+        border-radius: 8px;
+        width: 350px;
+        height: 350px;
+    }
+
+} */

@@ -1,0 +1,116 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<link rel="stylesheet" href="/stylesheets/newPets.css">
+
+<div id="loader" class="hidden"></div>
+
+<div class="row mb-5">
+    <h1 class="text-center">Registrando: Mascota Encontrada</h1>
+
+    <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mb-3">
+        <form action="/encontradas/nueva" method="POST" novalidate class="needs-validation" enctype="multipart/form-data" id="loadingForm">
+
+            <div class="row d-flex justify-content-between">
+                <h4 class="text-center">es Perro o Gato?</h4>
+                <div class="col-6 col-lg-5">
+                    <input class="form-check-input radio-animal" type="radio" name="animal" id="perro" value="perro" checked onclick="radio_click()">
+                    <label class="form-check-label form-label" for="perro"><img class="rounded img-fluid img-categoria" src="https://i.pinimg.com/474x/5d/f6/79/5df6791bc4fd1d1f87e28df06d58b06b.jpg"></label>
+                </div>
+                <div class="col-6 col-lg-5">                    
+                    <input class="form-check-input radio-animal" type="radio" name="animal" id="gato" value="gato" onclick="radio_click()">
+                    <label class="form-check-label form-label" for="gato"><img class="rounded img-fluid img-categoria" src="https://i.pinimg.com/474x/a7/b0/e9/a7b0e9702200441a724524df907be43d.jpg"></label>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+
+                <div class="col-12 col-md-4">
+                    <label for="breed">Raza:</label>
+                    <select class="form-select" name="breed" id="breed">
+                        <option value="mestizo">Mestizo</option>
+                        <option value="caniche">Caniche</option>
+                        <option value="bulldog">Bulldog</option>
+                        <option value="labrador">Labrador</option>
+                        <option value="pastor">Pastor Aleman</option>
+                        <option value="boxer">Boxer</option>
+                        <option value="otra">Otra</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <label for="sex">Sexo:</label>
+                    <select class="form-select" name="sex" id="sex">
+                        <option value="desconoce">Desconoce</option>
+                        <option value="macho">Macho</option>
+                        <option value="hembra">Hembra</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <label for="age">Edad:</label>
+                    <select class="form-select" name="age" id="age">
+                        <option value="adulto">Adulto</option>
+                        <option value="cachorro">Cachorro</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description">Descripcion:</label>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="4" required></textarea>
+                <div class="invalid-feedback">describe señales de la mascota que encontraste, para que sea mas facil identificarla!</div>
+            </div>
+
+            <!-- 
+            <div class="row mb-3">
+                <div class="col-4">
+                    <label for="microchip" >Posee microchip?</label>
+                    <input type="checkbox"  name="microchip" id="microchip">
+                </div>
+                <div class="col-3">
+                    <label for="collar" >Posee collar?</label>
+                    <input type="checkbox"  name="collar" id="collar">
+                </div>
+                <div class="col-5">
+                    <label for="chapa" >Posee Chapa identificatoria?</label>
+                    <input type="checkbox"  name="chapa" id="chapa">
+                </div>
+            </div> -->
+
+            <div class="mb-3">            
+                <label for="images" class="form-label">Subir imagenes:</label>
+                <input class="form-control" type="file" name="images" id="images" accept="image/png, image/jpeg, image/jpg" multiple required>
+                <span class="form-file-text"></span>
+                <div class="invalid-feedback">Incluye alguna foto para que su dueño pueda verla y reconocerla como suya</div>
+            </div>
+            
+            <label class="form-label" for="location">Ubicacion donde la encontraste:</label>
+            <div class="input-group mb-2">
+                <input class="form-control" type="text" name="location" id="location" required placeholder= "(Ej. Av 1 y calle 55, La Plata)">
+                <button class="btn btn-outline-success" type="button" id="locationButton">Ubicar Marcador<span class="textoDecorativo"> en el Mapa</span></button>
+                <div class="invalid-feedback">Se necesita una ubicacion para poder registrar en la base de datos</div>
+            </div>
+            
+            <div>
+                <input class="form-control mb-3" type="text" name="geometry" id="geometry" required>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback">La direccion ingresada no pudo ubicarse en el mapa, si la aplicacion no encuentra tu ubicacion proba con una cercana o haz dobleclick en el mapa para ubicar un marcador donde quieras!
+                </div>
+            </div>
+            
+            <div id="map-NewPet" class="mb-3"></div>
+            
+            <div>
+                <button class="btn btn-success mt-3" id="submitNewPetForm">Publicar</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+
+<!-- Scripts -->
+<script src="/javascripts/newPetForm.js"></script>
+<script src="/javascripts/mapNewPet.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjsdRanmSECqEeCwTepMC8DwTZhUq7UU&callback=initMap&v=weekly" async ></script>
+<script src="/javascripts/loadingScreen.js"></script>

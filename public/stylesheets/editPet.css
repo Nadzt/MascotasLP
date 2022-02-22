@@ -1,0 +1,28 @@
+h4 {
+    border-bottom: #bdbbbb solid 2px;
+    margin-bottom: 1rem;
+    padding-bottom: .2rem;
+}
+
+.deleteImgInputDiv {
+    display: flex;
+    align-items: center;
+}
+
+.deleteImgInputDiv label {
+    margin-left: 4px;
+}
+
+#found {
+    margin-top: .4rem;
+}
+
+@media (max-width: 576px) {
+    .imgDeleteDiv {
+        padding-right: 0px;
+    }
+
+    .textDeleteDiv {
+        margin-right: 0px;
+    }
+}

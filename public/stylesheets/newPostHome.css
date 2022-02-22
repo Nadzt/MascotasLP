@@ -1,0 +1,45 @@
+main { 
+    height: 100%; 
+}
+
+.bodyContainer {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.buttonsDiv {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-evenly;
+}
+
+.buttonsDiv a {
+    width: 30%;
+}
+
+@media (max-width: 992px) {
+    .bodyContainer {
+        margin-top: 10%;
+        justify-content: start;
+    }
+    .buttonsDiv {
+        height: 70%;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .buttonsDiv a {
+        width: 60%;
+        height: min-content;
+        display: grid;
+    }
+}
+
+@media (max-width: 576px) {
+    .buttonsDiv a {
+        width: 100%;
+    }
+}

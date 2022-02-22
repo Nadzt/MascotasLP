@@ -1,0 +1,148 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<link rel="stylesheet" href="/stylesheets/petsIndex.css">
+
+<div id="map-index"></div>
+
+<div class="text-center">
+    <% if(currentUser) { %> 
+        <h2 class="title mb-0">Mascotas perdidas cerca tuyo <a href="/user/<%= currentUser.id %>/editar" id="editUserGeometry"><i class="fas fa-edit"></i> cambiar ubicacion</a></h2>
+        </div>
+    <% } else { %>
+        <h3 class="title mb-0">Inicia sesion para buscar por cercania</h3>
+    <% } %>  
+</div>
+
+
+
+<div class="row">
+    <div class="col-10 offset-1 col-xl-2 offset-xl-0" id="filtrosBtnDiv">
+        <button class="btn mb-3 btn-filtro" type="button" data-bs-toggle="collapse" data-bs-toggle="button" data-bs-target="#filtros" id="filtrosBtn">
+            Filtros <i class="fas fa-sliders-h"></i>
+        </button>
+    </div>
+<div id="filtros" class="collapse col-xl-10">
+    <div class="mb-3">
+        <form action="/mascotas" method="POST">
+            <div class="row">
+                
+                <div class="col-6 col-md-4 col-xl-2">
+                    <label for="animal">Animal:</label>
+                    <select class="form-select" name="animal" id="animal" onchange="breedChange()">
+                        <option value="perro">Perro</option>
+                        <option value="gato">Gato</option>
+                        <option value="Cualquiera">Todos</option>
+                    </select>
+                </div>
+                
+                <div class="col-6 col-md-4 col-xl-2">
+                    <label for="breed">Raza:</label>
+                    <select class="form-select" name="breed" id="breed">
+                        <option value="Cualquiera">Todas</option>
+                        <option value="mestizo">Mestizo</option>
+                        <option value="caniche">Caniche</option>
+                        <option value="bulldog">Bulldog</option>
+                        <option value="labrador">Labrador</option>
+                        <option value="pastor">Pastor Aleman</option>
+                        <option value="boxer">Boxer</option>
+                        <option value="otra">Otra</option>
+                    </select>
+                </div>
+                
+                <div class="col-6 col-md-4 col-xl-2">
+                    <label for="sex">Sexo:</label>
+                    <select class="form-select" name="sex" id="sex">
+                        <option value="Cualquiera">Ambos</option>
+                        <option value="macho">Macho</option>
+                        <option value="hembra">Hembra</option>
+                    </select>
+                </div>
+                
+                <div class="col-6 col-md-4 col-xl-2">
+                    <label for="age">Edad:</label>
+                    <select class="form-select" name="age" id="age">
+                        <option value="Cualquiera">Cualquiera</option>
+                        <option value="adulto">Adulto</option>
+                        <option value="cachorro">Cachorro</option>
+                    </select>
+                </div>
+
+                <% if(currentUser){ %> 
+                    <div class="col-6 col-md-4 col-xl-2">
+                        <label for="searchBy">Buscar por:</label>
+                        <select class="form-select" name="searchBy" id="searchBy">
+                            <option value="cercania">Cercania</option>
+                            <option value="fecha">Fecha de publicacion</option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-6 col-md-4 col-xl-2 filterFormBtnDiv">
+                        <button class="btn btn-success" id="filterFormBtn">Buscar</button>
+                    </div>
+                <% } else { %>
+                    <div class="col-10 offset-1 col-md-8 offset-md-0 col-xl-4 filterFormBtnDiv">
+                        <button class="btn btn-success" id="filterFormBtn">Buscar</button>
+                    </div>
+                <% } %>  
+                
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div id="petsContainer">
+    <%for(let i = 0; i < 10; i++){%>
+        <% if(pets[i]) { %> 
+            <div class="card mb-3 pet-display"> 
+                <div class="row"> <!-- la carta toma forma eje X, por filas -->
+
+                    <div class="col-12 col-md-6 col-xl-4 petsImgDiv"> <!-- la imagen toma 4 columnas de la fila -->
+                        <img class="img-card" src="<%= pets[i].images[0].indexDisplay %>">
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-8 petsBodyDiv"> <!-- el contenido toma 8 col de la fila-->
+                        <div class="card-body">
+                            <h2 class="card-title"><%= pets[i].name %><% if(pets[i].found == true) { %> <span class="foundSpan">Encontrado</span> <% } %></h2>
+                            <h5>Descripcion:</h5>
+                            <p class="card-text"><%= pets[i].description.slice(0,800) %></p>
+                            <div>
+                                <small class="text-secondary"><%= pets[i].date.toLocaleDateString("es-AR"); %><span class="smallTextDescriptions"> - <%= pets[i].animal %> raza <%= pets[i].breed %>, <%= pets[i].sex %>, <%= pets[i].age %> perdido en <%= pets[i].location %></span></small>
+                                <div>
+                                    <a href="/mascotas/<%= pets[i].id %> " class="btn btn-blue-color">Ver Publicacion</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        <% } %> 
+    <% } %>
+</div>
+
+<!-- Script cambio de Raza -->
+<script src="/javascripts/breedChange.js"></script>
+
+<!-- infinite-scroll -->
+<script> const petsJs = JSON.parse(`<%- JSON.stringify(pets) %>`);</script>
+<script src="/javascripts/infiniteScroll.js" ascync></script>
+
+
+<!-- activa el link en Navbar -->
+<script> 
+    link1.classList.add("active");
+</script>
+
+<!-- Script de Mapa -->
+<script>let userLat, userLng;</script>
+<% if(currentUser) { %> 
+    <script>
+        userLat = JSON.parse(`<%= currentUser.geometry.coordinates[1] %>`);
+        userLng = JSON.parse(`<%= currentUser.geometry.coordinates[0] %>`);
+    </script>
+<% } %>
+<script> const petsJson = {features: JSON.parse(`<%- JSON.stringify(pets) %>`)};</script>
+<script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+<script src="/javascripts/mapIndex.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjsdRanmSECqEeCwTepMC8DwTZhUq7UU&callback=initMap&v=weekly" async ></script>

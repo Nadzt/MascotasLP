@@ -1,0 +1,15 @@
+.div-register {
+    font-weight: 600;
+}
+
+.input-register {
+    background-color: #e5e5e5;
+}
+
+#map-NewUser {
+    height: 400px;
+}
+
+#geometry {
+    display: none;
+}

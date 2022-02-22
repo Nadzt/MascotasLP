@@ -1,0 +1,54 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<link rel="stylesheet" href="/stylesheets/editPet.css">
+
+<div class="row">
+    <h1 class="text-center">Editando una mascota que encontraste:</h1>
+
+    <div class="col-6 offset-3">
+        <form action="/encontradas/<%= pet._id %>?_method=PUT" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+
+        <div class="mb-2">
+            <label class="form-label" for="description">Description:</label>
+            <textarea class="form-control" name="description" id="description" cols="30" rows="4" required><%= pet.description %></textarea>
+        </div>
+
+        <div class="mb-3">            
+            <label for="images" class="form-label">Subir mas imagenes:</label>
+            <input class="form-control" type="file" name="images" id="images" accept="image/png, image/jpeg, image/jpg" multiple>
+        </div> 
+
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="found" name="found" value=true >
+            <label class="form-check-label" for="found" ><h5>Marcar si se encontro a su dueño y la mascota ya fue devuelta!</h5></label>
+            <small>esta opcion no se puede revertir, las mascotas que fueron devuelta no aparecen en el mapa</small>
+        </div>
+
+        <h4 class="text-center">Imagenes en la publicacion:</h4>
+
+        <div class="row mb-3">
+            <% pet.images.forEach((img, index) => { %>
+                <div class="imgDeleteDiv col-6 col-md-4 col-lg-3">
+                    <img class="img-thumbnail" src="<%= img.thumbnail %>">
+                </div>
+                <div class="form-check-inline deleteImgInputDiv textDeleteDiv col-6">
+                    <input class="form-check-input" type="checkbox" id="delete<%= index %>" name="deleteImages[]" value="<%= img.filename %>">
+                    <label class="form-check-label" for="delete<%= index %>">Borrar</label>
+                </div>
+            <% }) %> 
+        </div>
+
+        <div class="d-flex justify-content-between">    
+            <a class="btn btn-secondary" href="/encontradas/<%= pet._id %>">cancelar</a>
+            <button class="btn btn-success">Actualizar</button>
+        </div>
+    </form>
+
+    <form class="mt-5" action="/encontradas/<%= pet._id %>?_method=DELETE" method="POST">
+        <div class="d-flex justify-content-end">
+        <button class="btn btn-danger">Eliminar publicacion</button>
+        </div>
+    </form>
+        
+    </div>
+    
+</div>

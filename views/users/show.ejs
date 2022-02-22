@@ -1,0 +1,107 @@
+<% layout("./layouts/boilerplate") %>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="/stylesheets/showUser.css">
+
+<div id="topside"></div>
+
+<div class="contenido">
+
+    <div class="userData">
+        <img src="<%= user.avatar %>" class="userAvatar">
+        <h1><%= user.username %></h1>
+        <h5>Redes Sociales:</h5>
+        <div>
+            <% if(user.facebook) { %> 
+                <a href="<%= user.facebook %> "><i class="fab fa-facebook-square"></i></a>
+            <% } else { %>
+                <p><i class="fab fa-facebook-square" id="noLink"></i></p>  
+            <% } %> 
+            <% if(user.twitter) { %> 
+                <a href="https://twitter.com/<%= user.twitter %>"><i class="fab fa-twitter"></i></a>
+            <% } else { %>
+                <p><i class="fab fa-twitter" id="noLink"></i></p>  
+            <% } %> 
+            <% if(user.instagram) { %> 
+                <a href="https://www.instagram.com/<%= user.instagram %>"><i class="fab fa-instagram"></i></a>
+            <% } else { %>
+                <p><i class="fab fa-instagram" id="noLink"></i></p>  
+            <% } %> 
+        </div>
+        <% if(currentUser && currentUser.id === user.id) { %> 
+        <a class="btn btn-secondary d-block" href="/user/<%= user.id %>/editar"><i class="fas fa-edit"></i> Editar Perfil</a>
+        <% } %> 
+    </div>
+
+    <div class="userContent">
+
+        <div class="userAbout">
+            <h5>Acerca de <%= user.username %> : </h5>
+            <% if(user.about) { %>
+                <p><%= user.about %></p>
+            <% } else { %>
+                <p class="text-muted text-center">Este usuario aun no ha agregado ninguna descripcion a su perfil</p>
+            <% } %> 
+        </div>  
+
+        <% if( user.userPets.length > 0 || user.userFounds.length > 0 ) { %>
+            <div class="userAbout">
+                <h2 class="text-center">Publicaciones</h2>
+
+                <% if(user.userPets.length > 0) { %> 
+                    <h4>Mascotas perdidas:</h4>
+                    <div class="postsDiv">
+                    <% let posts = user.userPets.reverse() %> 
+                    <% for(let post of posts ) { %> 
+                        <div class="posts  <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/mascotas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                    <% } %> 
+                    </div>
+                <% } %> 
+
+                <% if(user.userFounds.length > 0) { %> 
+                    <h4>Mascotas encontradas:</h4>
+                    <div class="postsDiv">
+                    <% let fPosts = user.userFounds.reverse() %> 
+                    <% for(let post of fPosts ) { %> 
+                        <div class="posts <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/encontradas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                    <% } %> 
+                    </div>
+                <% } %> 
+
+            </div>
+        <% } %>
+
+        
+        <% if( user.commentsPets.length > 0 || user.commentsFounds.length > 0 ) { %>
+            <div class="userAbout">
+                <h4 class="text-center">publicaciones donde comentaste</h4>
+
+                <% if(user.commentsPets.length > 0) { %> 
+                    <h4>Mascotas perdidas:</h4>
+                    <div class="postsDiv">
+                    <% let commentsPosts = user.commentsPets.reverse() %> 
+                    <% for(let post of commentsPosts ) { %> 
+                        <div class="posts  <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/mascotas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                    <% } %> 
+                    </div>
+                <% } %> 
+
+                <% if(user.commentsFounds.length > 0) { %> 
+                    <h4>Mascotas encontradas:</h4>
+                    <div class="postsDiv">
+                    <% let commentsFounds = user.commentsFounds.reverse() %> 
+                    <% for(let post of user.commentsFounds ) { %> 
+                        <div class="posts <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/encontradas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                    <% } %> 
+                    </div>
+                <% } %> 
+
+            </div>
+        <% } %>
+
+    </div>
+
+
+</div>
+

@@ -1,0 +1,248 @@
+.div-card {
+    border-radius: 7px;
+}
+.div-comments {
+    background-color: #d3d3d3;
+    border-radius: 7px;
+    border: #bdbbbb solid 2px;
+}
+
+.hr-comments {
+    max-width: 95%;
+    margin: auto;
+}
+
+.comment-bubble {
+    background-color: white;
+    text-align: start;
+    word-break: break-word;
+    font-size: .94rem;
+    line-height: 1.3;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 18px;
+    margin-bottom: 8px;
+}
+
+.comment-body {
+    border-radius: 18px;
+    resize: none;
+    overflow: hidden;
+    font-size: .94rem;
+    line-height: 1.3;
+    padding-top: 5px;
+    padding-bottom: 8px;
+    margin-top: 8px;   
+}
+
+.avatar {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    margin-top: 1px;
+}
+
+.textarea-avatar {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    margin-top: 9px;
+}
+
+.username-comment {
+    font-weight: 600;
+    font-size: .95rem
+}
+
+.username-comment a {
+    text-decoration: none;
+    color: black;
+}
+
+.bullet {
+    color: #c2c6cc;
+    font-size: .8rem;
+}
+
+.far {
+    color: #4f4f4f;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    visibility: hidden;
+}
+
+.div-glyphicon:hover .far{
+    visibility: visible;
+}
+
+#map-show {
+    border: #bdbbbb solid 2px;
+    border-radius: 7px;
+    height: 200px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.foundDiv {
+    background-color: #7cd18d;
+    height: 3rem;
+    border: #4cb880 solid 3px;
+    border-radius: 10px;
+}
+
+.card-title {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4px 4px 4px 0px;
+    border-radius: 4px;
+    margin-bottom: 0;
+}
+
+.card-text {
+    padding-left: 2px;
+}
+
+.petData {
+    display: block;
+    text-align: end;
+    margin-bottom: 1rem;
+}
+
+.description {
+    display: inline;
+    border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
+}
+
+.authorData {
+    display: flex;
+    align-items: center;
+}
+
+.authorData a {
+    margin: auto 8px;
+    text-decoration: none;
+}
+
+.authorData p {
+    margin: auto 8px;
+}
+
+.noLink {
+    color: grey;
+}
+
+.p-comment {
+    margin-bottom: 0;
+}
+
+#divScrollComments {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 650px;
+}
+
+#divScrollComments {
+    scrollbar-color: #bdbbbb #d3d3d3;
+}
+
+.dateAndShares {
+    display: flex;
+}
+
+.share-buttons {
+    margin-left: auto;
+}
+
+.fb-share-button span {
+    vertical-align: text-bottom !important;
+}
+
+#twitter-widget-0 {
+    vertical-align: text-bottom;
+}
+
+.editButtons {
+    display: flex;
+}
+
+.smTextArea {
+    display: none;
+}
+
+@media (max-width:1200px) {
+    #returnButton  {
+        margin-left: auto;
+    }
+}
+
+@media (max-width:768px) {
+    .avatar {
+        height: 40px;
+        width: 40px;
+    }
+
+    .textarea-avatar {
+        height: 40px;
+        width: 40px;
+    }
+    #deleteCommentGlyph {
+        visibility: visible;
+    }
+}
+
+@media (max-width: 576px) {
+    .dateAndShares {
+        display: flex;
+        flex-direction: column;
+        border-top: #bdbbbb solid 1px;
+    }
+
+    .dateAndShares small {
+        margin-left: auto;
+    }
+
+    .card-body small{
+        margin-bottom: 0px;
+    }
+
+    #divScrollComments{
+        max-height: 450px;
+    }
+
+    .editButtons {
+        flex-direction: column;
+    }
+
+    #returnButton  {
+        margin-left: 0px;
+        margin-top: 0.5rem;
+    }
+    
+    .mdTextArea {
+        display: none;
+    }
+
+    .smTextArea {
+        display: initial;
+    }
+}
+
+@media (max-width:375px) {
+    .avatar {
+        height: 50px;
+        width: 50px;
+    }
+
+    .textarea-avatar {
+        height: 50px;
+        width: 50px;
+    }
+}
+
+@media (max-height:650px) {
+    #divScrollComments {
+        max-height: 450px;
+    }
+}
+

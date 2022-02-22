@@ -1,0 +1,55 @@
+<% layout("./layouts/boilerplate") %>
+<link rel="stylesheet" href="/stylesheets/showUser.css">
+
+<div id="topside"></div>
+
+<div class="contenido">
+
+    <div class="userData">
+        <img src="<%= user.avatar %>" class="userAvatar">
+        <h1><%= user.username %></h1>
+        <h5>Redes Sociales:</h5>
+        <div>
+            <% if(user.facebook) { %> 
+                <a href="<%= user.facebook %> "><i class="fab fa-facebook-square"></i></a>
+            <% } else { %>
+                <p><i class="fab fa-facebook-square" id="noLink"></i></p>  
+            <% } %> 
+            <% if(user.twitter) { %> 
+                <a href="https://twitter.com/<%= user.twitter %>"><i class="fab fa-twitter"></i></a>
+            <% } else { %>
+                <p><i class="fab fa-twitter" id="noLink"></i></p>  
+            <% } %> 
+            <% if(user.instagram) { %> 
+                <a href="https://www.instagram.com/<%= user.instagram %>"><i class="fab fa-instagram"></i></a>
+            <% } else { %>
+                <p><i class="fab fa-instagram" id="noLink"></i></p>  
+            <% } %> 
+        </div>
+        <% if(currentUser && currentUser.id === user.id) { %> 
+        <a class="btn btn-secondary d-block" href="/user/<%= user.id %>/editar"><i class="fas fa-edit"></i> Editar Perfil</a>
+        <% } %> 
+    </div>
+
+    <div class="Notifications">
+        <% for (let i = 0; i < notifications.length; i++) {%>
+
+            <% if( i == (notifications.length - breaker) ) { %>
+                <hr class="oldNotifications">
+            <% } %>
+
+            <div class="NotificationDiv <% if (notifications[i].isFound) { %> isFoundNotification <% } %>  ">
+                <p><a href="/user/<%= notifications[i].authorId %>"><%= notifications[i].author %></a> <%= notifications[i].body %> <a href="<%= notifications[i].postId %>"><% if (notifications[i].isFound) { %> ver <% } %> publicacion</a></button></p>
+                <small class="text-muted"><%= timeAgo.format(notifications[i].date) %> </small>
+            </div>
+
+        <% } %> 
+
+        <% if (notifications.length == 0) { %>
+            <div class="NotificationDiv">
+                <p class="text-center text-muted">Aún no tienes notificaciones</p>
+            </div>
+        <% } %>  
+    </div>
+
+</div>

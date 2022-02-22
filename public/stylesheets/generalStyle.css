@@ -1,0 +1,154 @@
+.navbar-style {
+    background-color: #5383e8;
+    border-bottom: #4171d6 solid 1px;
+}
+
+.avatar-miniatura {
+    margin-top: 3px;
+    height: 36px;
+    width: 36px;
+}
+
+.avatar-miniatura2 {
+    margin-top: 3px;
+    height: 36px;
+    width: 36px;
+}
+
+
+body {
+    background-color: #EAEAEA;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.footer-style {
+    color: white;
+    background-color: #5383e8;
+    border-top: #4171d6 solid 1px;
+}
+
+.btn-blue-color {
+    color: white;
+    background-color: #5383e8;
+    padding-bottom: auto;
+}
+
+.btn-blue-color:hover {
+    background-color: #4171d6;
+    transition: 0.2s;
+    }
+
+.login-button {
+    border: rgba(255,255,255,.55) solid 1px;
+    padding-top: 6px;
+    margin-right: 4px;
+    font-weight: 700;
+}
+
+.login-button:hover {
+    border: white solid 1px;
+}
+
+.signup-button {
+    font-weight: 700;
+    background-color: #D7DADC;
+    padding-top: 6px;
+}
+.signup-button span {
+    color: black;
+}
+
+.signup-button:hover {
+    background-color: #EAEAEA;
+}
+
+.separador {
+    color: #a8c1f3;
+    margin: auto;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.active {
+    color: white;
+}
+
+.notificationBell {
+    color: white;
+    font-size: 1.25rem;
+    margin-top: 9px;
+    padding: 0 2px;
+}
+
+.notificationNum {
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    position: absolute;
+    right: -10px;
+    background-color: #FE4A49;
+    border-radius: 60px;
+    padding: 2px 5px;
+    padding-right: 6px;
+    line-height: 100%;
+    border: 2px white solid;
+}
+
+.notificationBellDiv {
+    position: relative;
+}
+
+.bellText {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .login-button {
+        border: none;
+        font-weight: 400;
+    }
+    
+    .login-button:hover {
+        border: none;
+    }
+    
+    .signup-button {
+        font-weight: 400;
+        background-color: inherit;
+    }
+
+    .signup-button span {
+        color: inherit;
+    }
+    
+    .signup-button:hover {
+        background-color: inherit;
+    }
+
+    .separador {
+        display: none;
+    }
+    
+    .bellText {
+        display: initial;
+    }
+
+    .avatar-miniatura {
+        display: none;
+    }
+
+    .notificationBell {
+        display: none !important;
+    }
+
+    .footer .container {
+        flex-direction: column;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .footer .container {
+        flex-direction: row;
+    }
+}

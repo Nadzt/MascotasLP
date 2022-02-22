@@ -1,0 +1,76 @@
+<% layout("./layouts/boilerplate") %>
+<link rel="stylesheet" href="/stylesheets/editUser.css">
+
+<div id="topside"></div>
+
+<div class="userData">
+    <img src="<%= user.avatar %>" class="userAvatar">
+    <h1><%= user.username %></h1>
+    <form action="/user/<%= user.id %>?_method=PUT" method="POST" class="needs-validation" novalidate>
+        
+        <div class="socialDivs">
+            <label class="form-label" for="facebook">Facebook :</label>
+            <input class="form-control socialInput" type="text" name="facebook" id="facebook" placeholder="Link de tu perfil de facebook (ej. https://www.facebook.com/tuNombre)" aria-label="facebook" value="<%= user.facebook %>">
+        </div>
+
+        <div class="socialDivs">
+            <label class="form-label" for="twitter">Twitter :</label>
+            <div class="input-group socialInput" >
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" name="twitter" id="twitter" placeholder="tu nombre en twitter" aria-label="twitter" value="<%= user.twitter %>">
+            </div>
+        </div>
+
+        <div class="socialDivs">
+            <label class="form-label" for="instagram">Instagram :</label>
+            <div class="input-group socialInput" >
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="text" class="form-control" name="instagram" id="instagram" placeholder="tu nombre en instagram" aria-label="instagram" value="<%= user.instagram %>">
+            </div>
+        </div>
+
+        <div class="socialDivs">
+            <label class="form-label" for="about" id="areaLabel">Acerca Tuyo :</label>
+            <textarea class="form-control socialInput autosize" name="about" id="about" cols="30" rows="2" placeholder="Escribe algo acerca tuyo"><%= user.about %> </textarea>
+        </div>
+        
+        <div class="socialDivs">
+            <label class="form-label" for="location">Direccion:</label>
+            <div class="input-group mb-2">
+                <input class="form-control" type="text" name="location" id="location" placeholder= "(Ej. 1 y 60, La Plata)">
+                <button class="btn btn-outline-success" type="button" id="locationButton">Ubicar</button>
+                <div class="invalid-feedback">Se necesita una ubicacion para buscar por cercania, esta informacion se mantiene privada</div>
+            </div>
+        </div>
+
+        <div>
+            <input class="form-control mb-3" type="text" name="geometry" id="geometry">
+            <div class="valid-feedback"></div>
+            <div class="invalid-feedback">La direccion ingresada no pudo ubicarse en el mapa, si la aplicacion no encuentra tu ubicacion proba con una cercana o haz dobleclick en el mapa para ubicar un marcador donde quieras!
+            </div>
+        </div>
+
+        <div id="map-EditUser" class="mb-3"></div>
+
+
+        <div style="display: flex; justify-content:space-evenly;">
+            <a href="/user/<%= user.id %>" class="btn btn-secondary">Cancelar</a>
+            <button class="btn btn-success">Guardar cambios</button>
+        </div>
+    </form>
+
+
+</div>
+
+
+<!-- TextArea -->
+<script src="/javascripts/autoTextArea.js"></script>
+
+
+<!-- Scripts de mapa -->
+<script>
+    let userLat = JSON.parse(`<%= currentUser.geometry.coordinates[1] %>`);
+    let userLng = JSON.parse(`<%= currentUser.geometry.coordinates[0] %>`);
+</script>
+<script src="/javascripts/mapEditUser.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjsdRanmSECqEeCwTepMC8DwTZhUq7UU&callback=initMap&v=weekly" async ></script>

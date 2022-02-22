@@ -1,0 +1,163 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<!-- Javascript Share SDKs -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v12.0" nonce="osfCQTyN"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<link rel="stylesheet" href="/stylesheets/showPage.css">
+
+<% if(pet.found == true)  { %> 
+<div class="foundDiv text-center">
+    <h3>Esta mascota ya fue encontrada!</h5>
+</div>
+<% } %> 
+<div class="row mb-5">
+    <div class="col-12 col-md-7 mt-3">
+        <div class="card div-card">
+            <div id="petCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <% pet.images.forEach((img, i) => { %>
+                        <div class="carousel-item <%= i === 0 ? "active" : "" %>">
+                        <img src="<%= img.url %>" class="d-block w-100 card-img-top" alt="">
+                        </div>
+                    <% }) %>
+                </div>
+                <% if (pet.images.length > 1) { %> 
+                <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#petCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                <% } %>
+            </div>
+            
+            <div class="card-body">
+                <h5 class="card-title"><%= pet.animal[0].toUpperCase() + pet.animal.substring(1) %></h5>
+                <small class="petData">Raza: <%= pet.breed %>, Sexo: <%= pet.sex %>, Edad: <%= pet.age %></small>
+                <h5 class="description">Descripcion:</h5>
+                <p class="card-text"><%= pet.description %></p>
+                <p class="card-text mb-0">encontrado en <%= pet.location %></p>
+                <div class="dateAndShares">
+                    <small class="text-muted">Publicado el <%= pet.date.toLocaleDateString("es-AR"); %> </small>
+                    <div class="share-buttons">
+                        <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="Encontre un <%= pet.animal %> en <%= pet.location %> -" data-hashtags="mascota #encontrada #PerdidaYEncontrada #laPlata" data-lang="es" data-dnt="true" data-show-count="false">Tweet</a>
+                        <div class="fb-share-button" data-href="http://localhost:3000/mascotas/61bca45b62518fd53720d18c" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fmascotas%2F61bca45b62518fd53720d18c&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer ">Publicado por:
+                <div class="authorData">
+                    <img src="<%= pet.author.avatar %>" class="avatar-miniatura2">
+                    <a href="/user/<%= pet.author.id %> "><%= pet.author.username %></a>
+                    <p>Redes Sociales:</p>
+                    <% if (pet.author.facebook) { %> <a href="<%= pet.author.facebook %> "><i class="fab fa-facebook-square"></i></a><% } else { %>
+                        <p><i class="fab fa-facebook-square noLink"></i></p>  
+                    <% } %>
+                    <% if(pet.author.twitter) { %> 
+                        <a href="https://twitter.com/<%= pet.author.twitter %>"><i class="fab fa-twitter"></i></a>
+                    <% } else { %>
+                        <p><i class="fab fa-twitter noLink"></i></p>  
+                    <% } %> 
+                    <% if(pet.author.instagram) { %> 
+                        <a href="https://www.instagram.com/<%= pet.author.instagram %>"><i class="fab fa-instagram"></i></a>
+                    <% } else { %>
+                        <p><i class="fab fa-instagram noLink"></i></p>  
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="map-show"></div>
+
+        <div class="editButtons">
+            <% if( currentUser && pet.author.equals(currentUser._id)) { %> 
+            <a href="/encontradas/<%= pet._id %>/editar" class="card-link btn btn-warning" id="editButton">Editar publicacion / Marcar como encontrada</a>
+            <% } %>
+            <a href="/encontradas" class="card-link btn btn-secondary" id="returnButton">volver a la pagina principal</a>
+        </div>
+
+
+    </div>
+
+    <div class="col-12 col-md-5 mt-3">
+        <div class="div-comments p-2">
+
+            <h4>Comentarios:</h4>
+
+            <div id="divScrollComments">
+                <% if (!pet.comments.length) { %>
+                    <p class="text-muted">Aun no hay comentarios en esta publicacion</p>
+                <% } else { %>
+                    <% for(let comment of pet.comments) { %>
+
+                        <div class="row">
+
+                            <div class="col-1">
+                                <img src= "<%= comment.author.avatar %>"
+                                class="avatar" >
+                            </div>
+
+                            <div class="col-9 offset-1 col-sm-10 offset-sm-0 col-md-8 offset-md-1 col-lg-9 col-xl-10 offset-xl-0">
+                                <div class="comment-bubble">
+                                    <span class="username-comment d-block"><a href="/user/<%= comment.author.id %>"><%= comment.author.username %></a> <span class="bullet" aria-hidden="true">• <%= timeAgo.format(comment.date) %></span></span>
+                                    <p class="p-comment"><%= comment.body %></p>
+                                </div>
+                            </div>
+
+                            <% if( currentUser && comment.author.equals(currentUser._id)) { %> 
+                            <div class="col-1 d-flex justify-content-center">
+                                    <div class="div-glyphicon d-flex align-items-center px-2">
+                                        <div>
+                                            <a href="/encontradas/<%= pet._id %>/comentarios/<%= comment._id %>?_method=DELETE"><i class="far fa-trash-alt" data-bs-toggle="tooltip" title="Borrar Comentario" id="deleteCommentGlyph"></i></a>
+                                        </div>
+                                    </div>
+                            </div>
+                            <% } %>
+
+                        </div>
+
+                    <% } %>  
+                <% } %>
+            </div>
+
+            <% if(currentUser){ %>
+
+            <form action="/encontradas/<%= pet._id %>/comentarios" class="mb-3 needs-validation" method="POST" novalidate>
+                <div class="mb-3 row">
+                    <div class="col-2 col-sm-1">
+                        <img src= "<%= currentUser.avatar %>"
+                        class="textarea-avatar" >
+                    </div>
+                    <div class="col-10 col-sm-11 col-md-9 offset-md-1 col-lg-10 offset-lg-1 col-xl-11 offset-xl-0">
+                        <textarea class="form-control comment-body autosize mdTextArea" name="body" id="body" cols="30" rows="1" placeholder="Escribe un comentario..." required></textarea>
+                        <div class="invalid-feedback">No se pueden enviar comentarios vacios</div>
+                    </div>
+                </div>
+            </form>
+
+            <% } else { %>
+                <p class="text-center">Tienes que iniciar sesion para poder comentar!</p>
+            <% } %> 
+
+        </div>
+
+    </div> 
+    
+</div>
+
+<!-- Scripts de Chat -->
+<script src="/javascripts/autoTextArea.js"></script>
+<script src="/javascripts/submitOnEnter.js"></script>
+
+<!-- Script de Mapa -->
+<script> const petJson = {features: JSON.parse(`<%- JSON.stringify(pet) %>`)};</script>
+<script src="/javascripts/mapShowPet.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjsdRanmSECqEeCwTepMC8DwTZhUq7UU&callback=initMap&v=weekly" async ></script>
+
+<!-- Comentarios Scroll -->
+<script> divScrollComments.scrollTop = divScrollComments.scrollTopMax </script>
