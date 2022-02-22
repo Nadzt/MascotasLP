@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router({mergeParams: true});
-const wrapAsync = require("../utilities/WrapAsync");
+const wrapAsync = require("../utilities/wrapAsync");
 const ExpressError = require("../utilities/ExpressError");
 const commentsController = require("./controllers/commentsFound")
 const anchorDeleteMethod = require("../utilities/anchorDeleteMethod")
