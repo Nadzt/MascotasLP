@@ -10,7 +10,7 @@ const flash = require("connect-flash");
 const path = require("path"); 
 
 // ---------------- session -------------------
-const secret = process.env.SECRET || "thisisasecret";
+const secret = process.env.SECRET || "supertopsecret";
 const session = require("express-session"); 
 const passport = require("passport");
 const LocalStrategy = require('passport-local');
@@ -56,79 +56,79 @@ app.use(mongoSanitize()); // seguridad, sanitiza mongo
 
 
 // Helmet Config
-// const scriptSrcUrls = [
-//     "https://stackpath.bootstrapcdn.com/",
-//     "https://api.tiles.mapbox.com/",
-//     "https://api.mapbox.com/",
-//     "https://kit.fontawesome.com/",
-//     "https://cdnjs.cloudflare.com/",
-//     "https://cdn.jsdelivr.net",
-//     "https://unpkg.com/",
-//     "https://maps.googleapis.com/",
-// ];
-// const styleSrcUrls = [
-//     "https://kit-free.fontawesome.com/",
-//     "https://stackpath.bootstrapcdn.com/",
-//     "https://api.mapbox.com/",
-//     "https://api.tiles.mapbox.com/",
-//     "https://fonts.googleapis.com/",
-//     "https://use.fontawesome.com/",
-//     "https://cdn.jsdelivr.net/",
-//     "https://cdn.jsdelivr.net/",
-// ];
-// const connectSrcUrls = [
-//     "https://api.mapbox.com/",
-//     "https://a.tiles.mapbox.com/",
-//     "https://b.tiles.mapbox.com/",
-//     "https://events.mapbox.com/",
-//     "https://maps.googleapis.com/",
-//     "https://www.gstatic.com/",
-// ];
-// const fontSrcUrls = [
-//     "https://use.fontawesome.com/",
-//     "https://fonts.gstatic.com/",
-// ];
-// app.use(
-//     helmet.contentSecurityPolicy({
-//         directives: {
-//             defaultSrc: [],
-//             connectSrc: ["'self'", ...connectSrcUrls],
-//             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
-//             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
-//             workerSrc: ["'self'", "blob:"],
-//             objectSrc: [],
-//             imgSrc: [
-//                 "'self'",
-//                 "blob:",
-//                 "data:",
-//                 "https://images.unsplash.com/",
-//                 "https://res.cloudinary.com/ysz1tft/", // mi cuenta
-//                 "https://maps.gstatic.com/",
-//                 "https://mt0.google.com/",
-//                 "https://maps.googleapis.com/",
-//                 "https://i.pinimg.com/",
-//             ],
-//             fontSrc: ["'self'", ...fontSrcUrls],
-//         },
-//     })
-// );
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://api.mapbox.com/",
+    "https://kit.fontawesome.com/",
+    "https://cdnjs.cloudflare.com/",
+    "https://cdn.jsdelivr.net",
+    "https://unpkg.com/",
+    "https://maps.googleapis.com/",
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com/",
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.mapbox.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://fonts.googleapis.com/",
+    "https://use.fontawesome.com/",
+    "https://cdn.jsdelivr.net/",
+    "https://cdn.jsdelivr.net/",
+];
+const connectSrcUrls = [
+    "https://api.mapbox.com/",
+    "https://a.tiles.mapbox.com/",
+    "https://b.tiles.mapbox.com/",
+    "https://events.mapbox.com/",
+    "https://maps.googleapis.com/",
+    "https://www.gstatic.com/",
+];
+const fontSrcUrls = [
+    "https://use.fontawesome.com/",
+    "https://fonts.gstatic.com/",
+];
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            connectSrc: ["'self'", ...connectSrcUrls],
+            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://images.unsplash.com/",
+                "https://res.cloudinary.com/ysz1tft/", // mi cuenta
+                "https://maps.gstatic.com/",
+                "https://mt0.google.com/",
+                "https://maps.googleapis.com/",
+                "https://i.pinimg.com/",
+            ],
+            fontSrc: ["'self'", ...fontSrcUrls],
+        },
+    })
+);
 
 // otras opciones de helmet
 // app.use(helmet.crossOriginEmbedderPolicy());
 // app.use(helmet.crossOriginOpenerPolicy());
 // app.use(helmet.crossOriginResourcePolicy());
 
-// app.use(helmet.dnsPrefetchControl());
-// app.use(helmet.expectCt());
-// app.use(helmet.frameguard());
-// app.use(helmet.hidePoweredBy());
-// app.use(helmet.hsts());
-// app.use(helmet.ieNoOpen());
-// app.use(helmet.noSniff());
-// app.use(helmet.originAgentCluster());
-// app.use(helmet.permittedCrossDomainPolicies());
-// app.use(helmet.referrerPolicy());
-// app.use(helmet.xssFilter());
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.expectCt());
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.originAgentCluster());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
+app.use(helmet.xssFilter());
 
 // Session & Mongo Store Config
 
