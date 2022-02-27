@@ -7,6 +7,7 @@ const express = require("express");
 const ejsMate = require("ejs-mate"); // para crear Layouts
 const methodOverride = require("method-override"); 
 const flash = require("connect-flash");
+var favicon = require('serve-favicon'); //favicon para express
 const path = require("path"); 
 
 // ---------------- session -------------------
@@ -53,7 +54,7 @@ app.use(morgan("tiny")); // console.log(req.status)
 app.use(express.static(path.join(__dirname, "public")));// Serves the Public!
 app.use(flash()); // flash
 app.use(mongoSanitize()); // seguridad, sanitiza mongo
-
+app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')))
 
 // Helmet Config
 const scriptSrcUrls = [
