@@ -1,7 +1,7 @@
 <% layout("./layouts/boilerplate.ejs") %>
 <!-- Javascript Share SDKs -->
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v12.0" nonce="osfCQTyN"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v13.0" nonce="cE8Kk2w0"></script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <link rel="stylesheet" href="/stylesheets/showPage.css">
@@ -44,7 +44,7 @@
                     <small class="text-muted">Publicado el <%= pet.date.toLocaleDateString("es-AR"); %> </small>
                     <div class="share-buttons">
                         <a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-text="Encontre un <%= pet.animal %> en <%= pet.location %> -" data-hashtags="mascota #encontrada #PerdidaYEncontrada #laPlata" data-lang="es" data-dnt="true" data-show-count="false">Tweet</a>
-                        <div class="fb-share-button" data-href="http://localhost:3000/mascotas/61bca45b62518fd53720d18c" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fmascotas%2F61bca45b62518fd53720d18c&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+                        <div class="fb-share-button" data-href="https://mascotasperdidaslp.com/mascotas/<%= pet._id %>" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmascotasperdidaslp.com%2Fmascotas%2F%<%= pet._id %>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
                     </div>
                 </div>
             </div>
