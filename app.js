@@ -93,10 +93,14 @@ const fontSrcUrls = [
     "https://use.fontawesome.com/",
     "https://fonts.gstatic.com/",
 ];
+const defaultSrcUrls = [
+    "https://www.facebook.com",
+    "https://platform.twitter.com",
+]
 app.use(
     helmet.contentSecurityPolicy({
         directives: {
-            defaultSrc: [],
+            defaultSrc: [...defaultSrcUrls],
             connectSrc: ["'self'", ...connectSrcUrls],
             scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
             styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
