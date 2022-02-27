@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:url"           content="https://mascotasperdidaslp.com/mascotas/<%= pet._id %>" />
+    <meta property="og:url"           content="https://mascotasperdidaslp.com<%= localLinks.url %>" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Mascotas Perdidas LP" />
+    <% if(pet.name){ %> 
+        <meta property="og:title"         content="Se perdio <%= pet.name %>" />
+    <% } else { %>
+        <meta property="og:title"         content="Mascotas Perdidas La Plata" />
+    <% } %>  
     <meta property="og:description"   content="<%= pet.location %> - <%= pet.description %> " />
     <meta property="og:image"         content="<%= pet.images[0].url %>" />
     <meta property="fb:app_id"         content="755723262498910" />
