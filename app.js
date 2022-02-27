@@ -69,6 +69,7 @@ const scriptSrcUrls = [
     "https://connect.facebook.net/",
     "https://platform.twitter.com/",
     "https://maps.googleapis.com/",
+    "https://static.xx.fbcdn.net/",
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -88,6 +89,7 @@ const connectSrcUrls = [
     "https://maps.googleapis.com/",
     "https://www.gstatic.com/",
     "https://maps.googleapis.com/",
+    "https://static.xx.fbcdn.net/",
 ];
 const fontSrcUrls = [
     "https://use.fontawesome.com/",
@@ -116,6 +118,7 @@ app.use(
                 "https://mt0.google.com/",
                 "https://maps.googleapis.com/",
                 "https://i.pinimg.com/",
+                "https://syndication.twitter.com/",
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
