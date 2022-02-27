@@ -98,6 +98,7 @@ const fontSrcUrls = [
 const defaultSrcUrls = [
     "https://www.facebook.com",
     "https://platform.twitter.com",
+    "https://web.facebook.com/",
 ]
 app.use(
     helmet.contentSecurityPolicy({
