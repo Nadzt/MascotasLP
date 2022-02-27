@@ -66,6 +66,9 @@ const scriptSrcUrls = [
     "https://cdn.jsdelivr.net",
     "https://unpkg.com/",
     "https://maps.googleapis.com/",
+    "https://connect.facebook.net/",
+    "https://platform.twitter.com/",
+    "https://maps.googleapis.com/",
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com/",
@@ -84,6 +87,7 @@ const connectSrcUrls = [
     "https://events.mapbox.com/",
     "https://maps.googleapis.com/",
     "https://www.gstatic.com/",
+    "https://maps.googleapis.com/",
 ];
 const fontSrcUrls = [
     "https://use.fontawesome.com/",
