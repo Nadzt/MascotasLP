@@ -14,8 +14,9 @@ const path = require("path");
 const secret = process.env.SECRET || "supertopsecret";
 const session = require("express-session"); 
 const passport = require("passport");
-const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const LocalStrategy = require('passport-local');
+const FacebookStrategy = require('passport-facebook');
 
 // ---------------- MongoDB -------------------
 const mongoose = require('mongoose'); // conecta con mongoDB
@@ -120,6 +121,9 @@ app.use(
                 "https://maps.googleapis.com/",
                 "https://i.pinimg.com/",
                 "https://syndication.twitter.com/",
+                "http://graph.facebook.com",
+                "https://platform-lookaside.fbsbx.com",
+                "https://www.facebook.com",
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
@@ -177,9 +181,54 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 
+// session passport Facebook
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_KEY,
+    callbackURL: "http://localhost:3000/oauth2/redirect/facebook",
+    profileFields: ['id', 'displayName', 'photos', 'email']
+},
+
+function(accessToken, refreshToken, profile, cb) {
+    process.nextTick(function(){
+        User.findOne({"facebookLogin.id": profile.id}, function(err, user) {
+            if(err){ return cb(err); }
+        
+            if(user){ return cb(null, user); 
+            } else { 
+                var newUser = new User();
+                newUser.username = undefined;
+                newUser.email = undefined;
+                newUser.facebookLogin.id = profile.id;
+                newUser.facebookLogin.token = accessToken;
+                newUser.facebookLogin.username = profile.displayName; 
+                newUser.avatar = "http://graph.facebook.com/"+profile.id+"/picture?type=large&access_token="+accessToken;
+                newUser.geometry = {type: "Point", coordinates: [-57.954424, -34.921312] }
+                newUser.save(function(err){ 
+                    if(err){ throw err; 
+                    } else { return cb(null, newUser);
+                    }
+                })
+            }  
+        })   
+    })
+}));
+
+passport.serializeUser(function(user, done) {
+    done(null, user._id);
+    // if you use Model.id as your idAttribute maybe you'd want
+    // done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
 // define como se inicia y cierra sesion de passport
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 
 // coneccion a mongoose
@@ -199,9 +248,10 @@ mongoose.connect(dbUrl, {
 const petRoutes = require("./routes/pets");
 const foundRoutes = require("./routes/found")
 const commentRoutes = require("./routes/comments");
-const commentFoundRoutes = require("./routes/commentsFound")
+const commentFoundRoutes = require("./routes/commentsFound");
 const userRoutes = require("./routes/users");
-const generalRoutes = require("./routes/general")
+const generalRoutes = require("./routes/general");
+const miscRoutes = require("./routes/misc")
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
@@ -225,10 +275,21 @@ app.use("/encontradas", foundRoutes);
 app.use("/mascotas/:id/comentarios", commentRoutes);
 app.use("/encontradas/:id/comentarios", commentFoundRoutes);
 app.use("/", userRoutes);
+app.use("/", miscRoutes);
+
 
 app.get("/nueva", (req, res) => {
     res.render("newHome")
 })
+
+//Facebook Login
+app.get("/facebook/login", passport.authenticate('facebook'));
+
+app.get('/oauth2/redirect/facebook',
+    passport.authenticate('facebook', { failureRedirect: '/login', failureFlash: "No se pudo iniciar sesion a travez de facebook" }),
+    function(req, res) {
+        res.redirect('/');
+});
 
 app.all("*", (req, res, next) => {
     next(new ExpressError("No se encontro la pagina", 404))

@@ -18,7 +18,7 @@
                 <a class="nav-link signup-button rounded-pill" href="/registrarse"><span>Registrarse</span></a>
                 <% } else {%>
                 <img src="<%= currentUser.avatar %>" class="avatar-miniatura">
-                <a href="/user/<%= currentUser._id %>" class="nav-link"><%= currentUser.username %></a>
+                <a href="/user/<%= currentUser._id %>" class="nav-link"><%= currentUser.username || currentUser.facebookLogin.username %></a>
                 <span class="separador">|</span>
                 <div class="notificationBellDiv">
                     <a href="/user/<%= currentUser._id %>/notificaciones" style="text-decoration: none;"> 

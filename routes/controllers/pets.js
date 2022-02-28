@@ -119,7 +119,7 @@ module.exports.updatePost = async (req, res, next) =>{
     
     if( valueBefore.found != pet.found ){
         const notification = new Notification();
-        notification.author = pet.author.username;
+        notification.author = pet.author.username || pet.author.facebookLogin.username;
         notification.authorId = pet.author.id;
         notification.reciever = [];
         commentAuthors.forEach(x => { notification.reciever.push(x) });

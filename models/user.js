@@ -63,6 +63,20 @@ const UserSchema = new Schema({
         ref: "Found"
         }
     ],
+    facebookLogin: {
+        id: {
+            type: String,
+        },
+        token: {
+            type: String,
+        },
+        username: {
+            type: String,
+        },
+        avatar: {
+            type: String,
+        },
+    },
 });
 
 var options = {

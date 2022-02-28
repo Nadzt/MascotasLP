@@ -1,3 +1,5 @@
+// NO SE USA
+
 let commentsOnScreen = 5;
 const totalComments = petJson.features.comments;
 

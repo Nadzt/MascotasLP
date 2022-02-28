@@ -14,7 +14,7 @@ module.exports.createComment = async (req, res, next) => {
     await comment.save();
     if( !(req.user._id.equals(pet.author._id)) ){ 
         const notification = new Notification();
-        notification.author = req.user.username;
+        notification.author = req.user.username || req.user.facebookLogin.username;
         notification.authorId = req.user.id;
         notification.reciever = [];
         notification.reciever.push(pet.author.id);

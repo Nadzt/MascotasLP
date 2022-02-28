@@ -1,11 +1,22 @@
 <% layout("./layouts/boilerplate") %>
 
+
 <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="row">
         <div class="col-sm-10 offset-sm-1"> <!-- col-md-8 offset-md-2 -->
             <div class="card shadow">
                 <img src="https://i.pinimg.com/474x/a7/b0/e9/a7b0e9702200441a724524df907be43d.jpg" alt="" class="card-img-top" />
                 <div class="card-body">
+
+                    <a href="/facebook/login" class="loginBtn--facebook loginBtn">
+                        <i class="fab fa-facebook-square" style="font-size: 1rem;"></i> Iniciar sesion con Facebook
+                    </a>
+
+                    <div style="display: flex;">
+                        <hr style="flex-grow: 1;margin-top: 21px;"> <p class="mt-2 mb-2" style="padding-left: 10px;padding-right: 10px;">ó</p> <hr style="flex-grow: 1;margin-top: 21px;">
+                    </div>
+
+
                     <form action="/login" method="POST" class="needs-validation" novalidate>
                         <div class="mb-2">
                             <label class="form-label" for="username">Nombre de usuario:</label>
@@ -19,12 +30,9 @@
                         <button class="btn btn-blue-color">Iniciar Sesion</button>
                         </div>
 
-                        <div class="d-grid">
-                            <p class="text-center mt-1 mb-1">ó</p>
-                            <a href="/registrarse" class="btn btn-success mt-0">Crea u  na Cuenta</a>
-                        </div>
-
+                        <small class="mt-1">¿No tenes una cuenta?<a href="/registrarse" style="text-decoration: none;">Registrate</a></small>
                     </form>
+
                 </div>
             </div>
         </div>

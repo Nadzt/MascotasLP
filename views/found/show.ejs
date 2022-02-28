@@ -52,7 +52,7 @@
             <div class="card-footer ">Publicado por:
                 <div class="authorData">
                     <img src="<%= pet.author.avatar %>" class="avatar-miniatura2">
-                    <a href="/user/<%= pet.author.id %> "><%= pet.author.username %></a>
+                    <a href="/user/<%= pet.author.id %> "><%= pet.author.username || pet.author.facebookLogin.username %></a>
                     <p>Redes Sociales:</p>
                     <% if (pet.author.facebook) { %> <a href="<%= pet.author.facebook %> "><i class="fab fa-facebook-square"></i></a><% } else { %>
                         <p><i class="fab fa-facebook-square noLink"></i></p>  
@@ -104,7 +104,7 @@
 
                             <div class="col-9 offset-1 col-sm-10 offset-sm-0 col-md-8 offset-md-1 col-lg-9 col-xl-10 offset-xl-0">
                                 <div class="comment-bubble">
-                                    <span class="username-comment d-block"><a href="/user/<%= comment.author.id %>"><%= comment.author.username %></a> <span class="bullet" aria-hidden="true">• <%= timeAgo.format(comment.date) %></span></span>
+                                    <span class="username-comment d-block"><a href="/user/<%= comment.author.id %>"><%= comment.author.username || comment.author.facebookLogin.username %></a> <span class="bullet" aria-hidden="true">• <%= timeAgo.format(comment.date) %></span></span>
                                     <p class="p-comment"><%= comment.body %></p>
                                 </div>
                             </div>

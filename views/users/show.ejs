@@ -10,7 +10,7 @@
 
     <div class="userData">
         <img src="<%= user.avatar %>" class="userAvatar">
-        <h1><%= user.username %></h1>
+        <h1><%= user.username || user.facebookLogin.username %></h1>
         <h5>Redes Sociales:</h5>
         <div>
             <% if(user.facebook) { %> 
@@ -37,7 +37,7 @@
     <div class="userContent">
 
         <div class="userAbout">
-            <h5>Acerca de <%= user.username %> : </h5>
+            <h5>Acerca de <%= user.username || user.facebookLogin.username %> : </h5>
             <% if(user.about) { %>
                 <p><%= user.about %></p>
             <% } else { %>
