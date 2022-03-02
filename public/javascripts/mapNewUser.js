@@ -44,8 +44,8 @@ function initMap() {
     } else {
         handleLocationError(false, infoWindow, map.getCenter());
     }  
-
-    map.addListener("dblclick", (event) => {
+    // dblclick x click
+    map.addListener("click", (event) => {
         addMarker(event.latLng);
         geocoder.geocode({ location: event.latLng })
             .then((response) => {

@@ -185,7 +185,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_KEY,
-    callbackURL: "http://localhost:3000/oauth2/redirect/facebook",
+    callbackURL: "http://mascotasperdidaslp.com/oauth2/redirect/facebook",
     profileFields: ['id', 'displayName', 'photos', 'email']
 },
 
