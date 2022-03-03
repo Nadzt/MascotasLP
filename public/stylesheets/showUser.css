@@ -29,7 +29,7 @@
 .userAvatar {
     border-radius: 50%;
     border: #EAEAEA solid 4px;
-    outline: #4171d6 solid 2px;
+    box-shadow: 0 0 0 2px #4171d6;
 }
 
 .userData img {
@@ -195,10 +195,29 @@
     .posts {
         width: 95%;
     }
+
+    .Notifications {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem;
+        height: fit-content;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .NotificationDiv {
+        width: 90%;
+    }
+
 }
 
 @media (max-width: 576px) {
     .userData {
         width: 90%;
+    }
+
+    .NotificationDiv {
+        width: 100%;
     }
 }
