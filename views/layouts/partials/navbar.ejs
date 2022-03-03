@@ -8,9 +8,15 @@
         <div class="navbar-collapse collapse" id="navbarCollapseContent">
             <div class="navbar-nav">
                 <a class="nav-link" href="/">Home</a>
-                <a class="nav-link" id="link1" href="/mascotas">Mascotas Perdidas</a>
-                <a class="nav-link" id="link2" href="/encontradas">Mascotas Encontradas</a>
+                <a class="nav-link" id="link1" href="/mascotas">Perdidas</a>
+                <a class="nav-link" id="link2" href="/encontradas">Encontradas</a>
                 <a class="nav-link" id="link3" href="/nueva">Crear Publicacion</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Otros</a>
+                    <ul class="dropdown-menu navbar-style" aria-labelledby="navbarDropdown">
+                      <li><a class="nav-link" href="/contacto">Contacto</a></li>
+                    </ul>
+                </li>
             </div>
             <div class="navbar-nav ms-auto">
                 <% if(!currentUser) {%>

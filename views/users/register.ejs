@@ -13,12 +13,15 @@
 
                         <div class="mb-2">
                             <label class="form-label" for="username">Nombre de usuario:</label>
-                            <input class="form-control input-register" type="text" name="username" id="username" required autofocus>
+                            <input class="form-control input-register" type="text" name="username" id="username" maxlength="16" minlength="3" pattern="([^\s][A-z0-9À-ž\s]+[^\s])" required autofocus>
+                            <p style="font-size: .8rem; font-weight: 100;">Maximo 16 caracteres</p>
+                            <div class="invalid-feedback" style="font-weight: 100;">Nombre de usuario no valido</div>
                         </div>
 
                         <div class="mb-2">
                             <label class="form-label" for="password">Contraseña:</label>
-                            <input class="form-control input-register" type="password" name="password" id="password" required>
+                            <input class="form-control input-register" type="password" name="password" id="password" required minlength="5">
+                            <div class="invalid-feedback" style="font-weight: 100;">La contraseña debe tener 5 o mas caracteres</div>
                         </div>
 
                         <div class="mb-3">
@@ -36,7 +39,7 @@
                         <div>
                             <input class="form-control mb-3" type="text" name="geometry" id="geometry" required>
                             <div class="valid-feedback"></div>
-                            <div class="invalid-feedback">La direccion ingresada no pudo ubicarse en el mapa, si la aplicacion no encuentra tu ubicacion proba con una cercana o haz dobleclick en el mapa para ubicar un marcador donde quieras!
+                            <div class="invalid-feedback">La direccion ingresada no pudo ubicarse en el mapa, si la aplicacion no encuentra tu ubicacion proba con una cercana o haz click en el mapa para ubicar un marcador donde quieras!
                             </div>
                         </div>
 

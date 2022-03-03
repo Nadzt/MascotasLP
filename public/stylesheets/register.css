@@ -1,5 +1,6 @@
 .div-register {
     font-weight: 600;
+    width: 45%;
 }
 
 .input-register {
@@ -12,4 +13,26 @@
 
 #geometry {
     display: none;
+}
+
+@media(max-width:991px){
+    .div-register {
+        width: 65%;
+    }
+}
+
+@media(max-width:767px){
+    .div-register {
+        width: 85%;
+    }
+}
+
+@media(max-width:575px){
+    .div-register {
+        width: 100%;
+    }
+
+    .container {
+        padding: 0px;
+    }
 }

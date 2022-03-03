@@ -176,6 +176,12 @@
     }
 }
 
+@media (min-width:992px) {
+    #sendCommentButton  {
+        display: none;
+    }
+}
+
 @media (max-width:768px) {
     .avatar {
         height: 40px;

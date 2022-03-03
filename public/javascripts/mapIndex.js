@@ -14,7 +14,7 @@ if(userLat){
 function initMap() {
     map = new google.maps.Map(document.getElementById("map-index"), {
         center: mapCenter,
-        zoom: 14,
+        zoom: 16,
         mapId: `e952df45373f5c93`,
         scrollwheel: true,
         disableDoubleClickZoom: true,
