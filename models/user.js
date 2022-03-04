@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 
 const UserSchema = new Schema({
+    username: {
+        type: String,
+        trim: true,
+        index: {
+            unique: true,
+            partialFilterExpression: {username: {$type: "string"}}
+        },
+    },
     email: {
         type: String,
         trim: true,

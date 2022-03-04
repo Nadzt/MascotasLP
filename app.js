@@ -196,7 +196,15 @@ function(accessToken, refreshToken, profile, cb) {
         
             if(user){
                 user.facebookLogin.token = accessToken;
-                return cb(null, user); 
+                user.avatar = "http://graph.facebook.com/"+profile.id+"/picture?type=large&access_token="+accessToken;
+                user.save(function(err){ 
+                    if(err){ 
+                        throw err; 
+                    } else {
+                        return cb(null, user);
+                    }
+                });
+                // return cb(null, user); 
             } else { 
                 var newUser = new User();
                 newUser.username = undefined;
@@ -204,7 +212,7 @@ function(accessToken, refreshToken, profile, cb) {
                 newUser.facebookLogin.id = profile.id;
                 newUser.facebookLogin.token = accessToken;
                 newUser.facebookLogin.username = profile.displayName; 
-                newUser.avatar = "http://graph.facebook.com/"+profile.id+"/picture?type=large&access_token="+accessToken;
+                newUser.avatar = "http://graph.facebook.com/"+profile.id+"/picture?type=large&access_token=";
                 newUser.geometry = {type: "Point", coordinates: [-57.954424, -34.921312] }
                 newUser.save(function(err){ 
                     if(err){ throw err; 
