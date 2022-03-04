@@ -212,7 +212,7 @@ function(accessToken, refreshToken, profile, cb) {
                 newUser.facebookLogin.id = profile.id;
                 newUser.facebookLogin.token = accessToken;
                 newUser.facebookLogin.username = profile.displayName; 
-                newUser.avatar = "http://graph.facebook.com/"+profile.id+"/picture?type=large&access_token=";
+                newUser.avatar = "http://graph.facebook.com/"+profile.id+"/picture?type=large&access_token="+accessToken;
                 newUser.geometry = {type: "Point", coordinates: [-57.954424, -34.921312] }
                 newUser.save(function(err){ 
                     if(err){ throw err; 
