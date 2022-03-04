@@ -12,3 +12,8 @@ module.exports.politica = (req, res) => {
 module.exports.contact = (req, res) => {
     res.render("misc/contact");
 }
+
+// About us
+module.exports.about = (req, res) => {
+    res.render("misc/about");
+}

@@ -17,8 +17,8 @@ function initMap() {
         gestureHandling: "greedy",
     });
     
-
-    map.addListener("dblclick", (event) => {
+    // click en vez de dblclick
+    map.addListener("click", (event) => {
         addMarker(event.latLng);
         geocoder.geocode({ location: event.latLng })
             .then((response) => {

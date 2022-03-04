@@ -11,4 +11,7 @@ router.get("/privacidad", miscController.politica);
 // Pagina de contacto
 router.get("/contacto", miscController.contact);
 
+// Pagina de contacto
+router.get("/about", miscController.contact);
+
 module.exports = router;
