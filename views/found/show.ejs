@@ -18,7 +18,7 @@
                 <div class="carousel-inner">
                     <% pet.images.forEach((img, i) => { %>
                         <div class="carousel-item <%= i === 0 ? "active" : "" %>">
-                        <img src="<%= img.url %>" class="d-block w-100 card-img-top" alt="">
+                            <img src="<%= img.showSrc %>" class="d-block w-100 card-img-top" alt="">
                         </div>
                     <% }) %>
                 </div>

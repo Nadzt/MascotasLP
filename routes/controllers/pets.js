@@ -81,7 +81,7 @@ module.exports.showPet = async (req, res, next) => {
         req.flash("error", "No se encontro esa pagina!");
         return res.redirect("/mascotas")
     };
-    console.log(pet)
+    // console.log(pet);
     res.render("pets/show", { pet, msg: req.flash("success"), timeAgo });
 };
 

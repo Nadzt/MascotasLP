@@ -10,9 +10,12 @@ ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200,h_120,c_fill');
 });
 
-
 ImageSchema.virtual('indexDisplay').get(function () {
     return this.url.replace('/upload', '/upload/w_400,h_400,c_fill');
+});
+
+ImageSchema.virtual('showSrc').get(function () {
+    return this.url.replace('/upload', '/upload/w_900,c_fill');
 });
 
 const opts = { toJSON: { virtuals: true } };
