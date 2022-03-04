@@ -5,7 +5,11 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const UserSchema = new Schema({
     email: {
         type: String,
-        unique: true,
+        trim: true,
+        index: {
+            unique: true,
+            partialFilterExpression: {email: {$type: "string"}}
+        },
     },
     avatar: {
         type: String,

@@ -186,7 +186,7 @@ passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_KEY,
     callbackURL: "https://mascotasperdidaslp.com/oauth2/redirect/facebook",
-    profileFields: ['id', 'displayName', 'photos', 'email']
+    profileFields: ['id', 'displayName', 'photos']
 },
 
 function(accessToken, refreshToken, profile, cb) {
@@ -194,7 +194,9 @@ function(accessToken, refreshToken, profile, cb) {
         User.findOne({"facebookLogin.id": profile.id}, function(err, user) {
             if(err){ return cb(err); }
         
-            if(user){ return cb(null, user); 
+            if(user){
+                user.facebookLogin.token = accessToken;
+                return cb(null, user); 
             } else { 
                 var newUser = new User();
                 newUser.username = undefined;
