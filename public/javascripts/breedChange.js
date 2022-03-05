@@ -23,8 +23,8 @@ function breedChange() {
         if (animal.value == "gato") {
             var options = {
                 Cualquiera: "Todas",
-                peloLargo : 'Pelo Largo',
-                peloCorto : 'Pelo Corto',
+                "pelo largo" : 'Pelo Largo',
+                "pelo corto" : 'Pelo Corto',
             };
         } else {
             var options = {

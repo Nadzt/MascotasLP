@@ -19,8 +19,8 @@ function radio_click() {
 
     } else {
         var options = {
-            peloLargo : 'Pelo Largo',
-            peloCorto : 'Pelo Corto',
+            "pelo largo" : 'Pelo Largo',
+            "pelo corto" : 'Pelo Corto',
         };
     }
 
