@@ -166,7 +166,7 @@ const sessionConfig = {
     store,
     secret,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         httpOnly: true,
         // secure: true,
