@@ -39,3 +39,5 @@ function breedChange() {
     }
 
 }
+
+document.getElementById("animal").addEventListener("click", breedChange);

@@ -30,4 +30,5 @@ function radio_click() {
     }
 }
 
-// document.getElementById("location").value = "La Plata, "
+document.getElementById("perro").addEventListener("click", radio_click);
+document.getElementById("gato").addEventListener("click", radio_click);
