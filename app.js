@@ -209,6 +209,7 @@ function(accessToken, refreshToken, profile, cb) {
                 var newUser = new User();
                 newUser.username = undefined;
                 newUser.email = undefined;
+                newUser.isAdmin = false;
                 newUser.facebookLogin.id = profile.id;
                 newUser.facebookLogin.token = accessToken;
                 newUser.facebookLogin.username = profile.displayName; 
