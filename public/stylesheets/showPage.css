@@ -101,6 +101,7 @@
 
 .card-text {
     padding-left: 2px;
+    white-space: pre-wrap;
 }
 
 .petData {

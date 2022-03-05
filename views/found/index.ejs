@@ -120,7 +120,7 @@
 <script src="/javascripts/breedChange.js"></script>
 
 <!-- inf-scroll -->
-<script> const petsJs = JSON.parse(`<%- JSON.stringify(pets) %>`);</script>
+<script> const petsJs = <%- JSON.stringify(pets) %>; </script>
 <script src="/javascripts/infiniteScrollF.js" ascync></script>
 
 <!-- activa el link en Navbar -->
@@ -136,7 +136,7 @@
         userLng = JSON.parse(`<%= currentUser.geometry.coordinates[0] %>`);
     </script>
 <% } %>
-<script> const petsJson = {features: JSON.parse(`<%- JSON.stringify(pets) %>`)};</script>
+<script> const petsJson = { features: <%- JSON.stringify(pets) %> };</script>
 <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
 <script src="/javascripts/mapIndexFound.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjsdRanmSECqEeCwTepMC8DwTZhUq7UU&callback=initMap&v=weekly" async ></script>

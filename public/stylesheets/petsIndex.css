@@ -80,6 +80,13 @@
     padding-left: 0px;
 }
 
+.card-text {
+    white-space: pre-wrap;
+    max-height: 260px;
+    line-height: normal;
+    overflow: hidden;
+}
+
 .card-body h5 {
     margin-bottom: 0px;
 }
@@ -89,6 +96,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: auto;
+    border-top: solid 1px #a1a1a188;
 }
 
 .petsImgDiv {

@@ -54,7 +54,7 @@
                     <div class="postsDiv">
                     <% let posts = user.userPets.reverse() %> 
                     <% for(let post of posts ) { %> 
-                        <div class="posts  <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/mascotas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                        <div class="posts  <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/mascotas/<%= post.id %>" style="text-decoration: none;"><%= post.name %></a></h4></div>
                     <% } %> 
                     </div>
                 <% } %> 
@@ -64,7 +64,7 @@
                     <div class="postsDiv">
                     <% let fPosts = user.userFounds.reverse() %> 
                     <% for(let post of fPosts ) { %> 
-                        <div class="posts <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/encontradas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                        <div class="posts <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/encontradas/<%= post.id %>" style="text-decoration: none;"><%= post.name %></a></h4></div>
                     <% } %> 
                     </div>
                 <% } %> 
@@ -82,7 +82,7 @@
                     <div class="postsDiv">
                     <% let commentsPosts = user.commentsPets.reverse() %> 
                     <% for(let post of commentsPosts ) { %> 
-                        <div class="posts  <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/mascotas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                        <div class="posts  <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/mascotas/<%= post.id %>" style="text-decoration: none;"><%= post.name %></a></h4></div>
                     <% } %> 
                     </div>
                 <% } %> 
@@ -92,7 +92,7 @@
                     <div class="postsDiv">
                     <% let commentsFounds = user.commentsFounds.reverse() %> 
                     <% for(let post of user.commentsFounds ) { %> 
-                        <div class="posts <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/encontradas/<%= post.id %>" style="text-decoration: none;">1<%= post.name %></a></h4></div>
+                        <div class="posts <% if( post.found ){ %> isFound <% } %>"><img src="<%= post.images[0].thumbnail %>"><h4><a href="/encontradas/<%= post.id %>" style="text-decoration: none;"><%= post.name %></a></h4></div>
                     <% } %> 
                     </div>
                 <% } %> 

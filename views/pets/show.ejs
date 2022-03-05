@@ -158,7 +158,7 @@
 <script src="/javascripts/submitOnEnter.js"></script>
 
 <!-- Script de Mapa -->
-<script> const petJson = {features: JSON.parse(`<%- JSON.stringify(pet) %>`)};</script>
+<script> const petJson = { features: <%- JSON.stringify(pet) %> };</script>
 <script src="/javascripts/mapShowPet.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjjsdRanmSECqEeCwTepMC8DwTZhUq7UU&callback=initMap&v=weekly" async ></script>
 
