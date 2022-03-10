@@ -14,4 +14,7 @@ router.get("/contacto", miscController.contact);
 // Pagina de contacto
 router.get("/about", miscController.contact);
 
+// Admin
+router.get("/adminview", miscController.admin)
+
 module.exports = router;

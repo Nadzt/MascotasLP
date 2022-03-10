@@ -14,7 +14,7 @@ if(userLat){
 function initMap() {
     map = new google.maps.Map(document.getElementById("map-index"), {
         center: mapCenter,
-        zoom: 16,
+        zoom: 14,
         mapId: `e952df45373f5c93`,
         scrollwheel: true,
         disableDoubleClickZoom: true,
@@ -31,14 +31,14 @@ function initMap() {
         gato: {
             icon: { 
                 url: "images/catMarker.png",
-                scaledSize: new google.maps.Size(20, 20),
+                scaledSize: new google.maps.Size(30, 30),
                 origin: new google.maps.Point(0,0),
             },
         },
         perro: {
             icon: {
                 url: "images/dogMarker.png",
-                scaledSize: new google.maps.Size(20, 20),
+                scaledSize: new google.maps.Size(30, 30),
                 origin: new google.maps.Point(0,0),
             }
         },
