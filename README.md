@@ -1,5 +1,4 @@
 # MascotasLP
-https://www.youtube.com/watch?v=qMck70tLDuo
 
 Git status
 Update:
