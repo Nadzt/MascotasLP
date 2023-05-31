@@ -5,11 +5,11 @@ This is my first project, a full-stack app made with Node.js, Express, and Boots
 It's a portal to find pets that have been lost, by posting them into an interactive map.
 Here are some of the features of the app:
 
-    Users can post a lost/found pet report, including a photo, description, and location and different filters(breed, sex, date, etc).
-    Other users can view lost/found pet reports and search for pets by location and different filters(breed, sex, date, etc).
-    If a user finds a lost pet, they can contact the owner through the app.
-    User profiles by creating an user or Facebook OAuth.
-    Comment and Notification systems
+    *Users can post a lost/found pet report, including a photo, description, and location.
+    *Other users can view lost/found pet reports filter by location, breed, date, among others.
+    *If a user finds a lost pet, they can contact the owner through the app.
+    *User profiles by creating an user or Facebook OAuth.
+    *Comment and Notification systems
 
 Here are some screenshots of how the app used to look when deployed:
 Latest lost pets posts:
