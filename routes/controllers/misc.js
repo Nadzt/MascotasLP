@@ -23,7 +23,7 @@ module.exports.about = (req, res) => {
 }
 
 // About us
-module.exports.admin = (req, res) => {
+module.exports.admin = async (req, res) => {
     let pets = await Pet.count()  
     let founds = await Found.count()  
     let users = await User.count()  
