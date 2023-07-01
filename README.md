@@ -12,12 +12,13 @@ Here are some of the features of the app:
     *Comment and Notification systems
 
 Here are some screenshots of how the app used to look when deployed:
-Latest lost pets posts:
+
+Latest posts:
 ![screenshot](https://github.com/Nadzt/Portfolio-V1/blob/master/img/project1-1.jpg)
 
-A pet post:
+A lost pet post:
 ![screenshot](https://github.com/Nadzt/Portfolio-V1/blob/master/img/project1-2.jpg)
 
-An user profile:
+An user profile page:
 ![screenshot](https://github.com/Nadzt/Portfolio-V1/blob/master/img/project1-3.jpg)
 
