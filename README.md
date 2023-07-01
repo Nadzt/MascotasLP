@@ -1,6 +1,6 @@
 ## Mascotas Perdidas La Plata
 
-This is my first project, a full-stack app made with Node.js, Express, and Bootstrap for styling. It used to be hosted on a Droplet on Digital Ocean, but it's no longer online. I'd like to recreate it with the knowledge I now possess, since I didn't like the Bootstrapy look, and it was the reason i took a CSS course to hone my skills.
+This is my first project, a full-stack app made with Node.js, Express, and Bootstrap for styling.
 
 It's a portal to find pets that have been lost, by posting them into an interactive map.
 Here are some of the features of the app:
