@@ -185,7 +185,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_KEY,
-    callbackURL: "https://mascotasperdidaslp.com/oauth2/redirect/facebook",
+    callbackURL: "https://midjourney-clone-two.vercel.app/oauth2/redirect/facebook",
     profileFields: ['id', 'displayName', 'photos']
 },
 
